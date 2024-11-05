@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videography Skills</title>
+    <style>
+ /* Universal Selector to reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0a0a0a;
+    padding-top: 80px; /* Adjust to match the header height */
+}
+
+/* Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #ffcc00;
+    padding: 20px;
+    z-index: 1000;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 255, 255, 0.2);
+    transition: background 0.3s;
+}
+
+/* Section Styles */
+section {
+    text-align: center;
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+    margin-top: 20px;
+}
+    section p {
+        color: #0ff;
+    }
+
+/* Glow Text Style */
+.glow-text {
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+  font-size: 1.7rem;
+}
+
+/* Anchor Links Styles */
+.anchor-links {
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    background-color: #222;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s;
+    font-family: "Courier New", monospace;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #0ff, 0 0 30px #0ff;
+    transition: 0.5s;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+    100% {
+        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+    }
+}
+
+    /* Zoom and Rotate-in effect when the page loads */
+.zoom-rotate-in {
+    animation: zoomRotateIn 0.6s ease-out forwards;
+    transform: scale(0.8) rotate(-10deg);
+    opacity: 0;
+}
+
+/* Zoom and Rotate-out effect when navigating away */
+.zoom-rotate-out {
+    animation: zoomRotateOut 0.6s ease-in forwards;
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+}
+
+/* Keyframes for Zoom and Rotate-in */
+@keyframes zoomRotateIn {
+    from {
+        transform: scale(0.8) rotate(-10deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+/* Keyframes for Zoom and Rotate-out */
+@keyframes zoomRotateOut {
+    from {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(0.8) rotate(10deg);
+        opacity: 0;
+    }
+}
+
+    </style>
+ 
+</head>
+<body>
+    <header>
+        <h1 class="glow-text">My Videography Skills</h1>
+    </header>
+
+    <main>
+        <section>
+            <p>Welcome to my videographer skills page! Content is Unavailable right now!</p>
+            <p></p>
+            <div class="anchor-links">
+                <a href="ve.html" class="btn glow">Back</a>
+                <a href="index.html" class="btn glow">Home</a>
+                <a href="wd.html" class="btn glow">Next</a>
+            </div>
+        </section>
+    </main>
+   <script>
+    // Function to handle page load with zoom and rotate-in effect
+    function animatePageLoad() {
+        document.body.classList.add("zoom-rotate-in");
+    }
+
+    // Function to handle page leave with zoom and rotate-out effect
+    function animatePageLeave(event) {
+        event.preventDefault(); // Prevent immediate navigation
+
+        const targetUrl = event.currentTarget.href; // Get the link URL
+
+        // Add the zoom-rotate-out class
+        document.body.classList.remove("zoom-rotate-in");
+        document.body.classList.add("zoom-rotate-out");
+
+        // Use setTimeout to delay navigation until after the animation
+        setTimeout(() => {
+            window.location.href = targetUrl; // Navigate to the new page
+        }, 600); // Adjust this delay to match the animation duration in CSS
+    }
+
+    // Add page load animation when the page is loaded
+    window.addEventListener("load", animatePageLoad);
+
+    // Add click event listeners to all internal navigation links
+    document.querySelectorAll("a").forEach(link => {
+        if (link.hostname === window.location.hostname) { // Only add to internal links
+            link.addEventListener("click", animatePageLeave);
+        }
+    });
+</script>
+</body>
+</html>
